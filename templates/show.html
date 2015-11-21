@@ -1,0 +1,22 @@
+{% with messages = get_flashed_messages() %}
+  {% for message in messages %}
+    <h2>{{ message }}</h2>
+  {% endfor %}
+{% endwith %}
+
+<h1>Transaction</h1>
+<h2>Details</h2>
+<p>
+  <table>
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+    {% for key, value in transaction %}
+    <tr>
+      <td>{{ key }}</td>
+      <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</p>

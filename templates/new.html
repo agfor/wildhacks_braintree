@@ -1,0 +1,21 @@
+{% with messages = get_flashed_messages() %}
+  {% for message in messages %}
+    <h2>{{ message }}</h2>
+  {% endfor %}
+{% endwith %}
+
+<h1>Checkout</h1>
+<form id="checkout" method="post" action="/checkout">
+  <label for="amount">Amount</label>
+  <input type="text" name="amount" id="amount" value="10.00">
+  <div id="payment-form"></div>
+  <input type="submit" value="Pay Now">
+</form>
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script>
+  var clientToken = '{{ client_token }}';
+  braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+  });
+</script>
